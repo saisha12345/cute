@@ -67,7 +67,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 1rem;
-    gap: 1.2rem;
+    gap: 0.85rem;
     box-sizing: border-box;
   }
   
@@ -158,7 +158,7 @@
     display: none;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.1rem;
     animation: fadeIn 1.2s ease 0.4s forwards;
     opacity: 0;
   }
@@ -191,8 +191,8 @@
     font-size: var(--font-size-large);
     font-weight: 400;
     line-height: normal;
-    margin-top: 0.3rem;
-    margin-bottom: 0.5rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.2rem;
     animation: popIn 0.6s ease-out forwards;
   }
   
@@ -264,34 +264,43 @@
     cursor: pointer;
     padding: 0;
     animation: popIn 0.55s ease-out forwards, floatUpDown 2.5s ease-in-out infinite;
+    width: 92px;
+    height: 92px;
+    position: relative;
+    z-index: 20;
+    flex-shrink: 0;
   }
 
   .cat-button img {
-    width: 86px;
-    height: 86px;
+    width: 92px;
+    height: 92px;
     object-fit: contain;
     image-rendering: pixelated;
+    pointer-events: none;
   }
 
   .cat-button.cat-fallback::after {
     content: '🐱';
     display: grid;
     place-items: center;
-    width: 86px;
-    height: 86px;
+    width: 92px;
+    height: 92px;
     font-size: 4rem;
   }
 
   .tiny-message {
     color: var(--color-message-text);
     font-family: var(--font-family-main);
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     text-align: center;
     background: #fff8fc;
     border: 3px solid var(--color-border);
     border-radius: 15px;
-    padding: 0.65rem 0.9rem;
+    padding: 0.5rem 0.75rem;
     animation: popIn 0.35s ease-out forwards;
+    position: relative;
+    z-index: 30;
+    max-width: 92%;
   }
 
   .audio-ui.show {
@@ -404,7 +413,7 @@
       height: auto;
       min-height: 250px;
       padding: 0.5rem 0.75rem;
-      gap: 0.8rem;
+      gap: 0.65rem;
     }
 
     .final-deco-wrapper {
