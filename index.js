@@ -78,22 +78,36 @@ letterButton.addEventListener('click', () => {
   letterModal.classList.remove('hidden');
 });
 
-closeLetter.addEventListener('click', () => {
+function closeLetterAndShowCat() {
   letterModal.classList.add('hidden');
   letterButton.classList.add('hidden');
   catButton.classList.remove('hidden');
-});
+  tinyMessage.classList.add('hidden');
+}
+
+closeLetter.addEventListener('click', closeLetterAndShowCat);
 
 letterModal.addEventListener('click', (event) => {
   if (event.target === letterModal) {
-    letterModal.classList.add('hidden');
-    letterButton.classList.add('hidden');
-    catButton.classList.remove('hidden');
+    closeLetterAndShowCat();
   }
 });
 
-catButton.addEventListener('click', () => {
+function toggleTinyMessage() {
+  tinyMessage.textContent = 'i love you forever — love, saisha';
   tinyMessage.classList.toggle('hidden');
+}
+
+catButton.addEventListener('click', toggleTinyMessage);
+catButton.addEventListener('touchstart', (event) => {
+  event.preventDefault();
+  toggleTinyMessage();
+});
+
+document.addEventListener('click', (event) => {
+  if (event.target.closest('#cat-button')) {
+    toggleTinyMessage();
+  }
 });
 
 function formatTime(seconds) {
