@@ -93,22 +93,18 @@ letterModal.addEventListener('click', (event) => {
   }
 });
 
-function toggleTinyMessage() {
+function showTinyMessage(event) {
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   tinyMessage.textContent = 'i love you forever — love, saisha';
-  tinyMessage.classList.toggle('hidden');
+  tinyMessage.classList.remove('hidden');
 }
 
-catButton.addEventListener('click', toggleTinyMessage);
-catButton.addEventListener('touchstart', (event) => {
-  event.preventDefault();
-  toggleTinyMessage();
-});
-
-document.addEventListener('click', (event) => {
-  if (event.target.closest('#cat-button')) {
-    toggleTinyMessage();
-  }
-});
+catButton.addEventListener('click', showTinyMessage);
+catButton.addEventListener('pointerup', showTinyMessage);
+catButton.addEventListener('touchend', showTinyMessage);
 
 function formatTime(seconds) {
   const m = Math.floor(seconds / 60);
