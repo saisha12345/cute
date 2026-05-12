@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>for mingyao</title>
   <link rel="icon" type="image/png" href="./assets/bunny-favicon-pixel.png" sizes="48x48">
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -32,10 +32,10 @@
       <div class="final-message">happy to be with you!</div>
       <button id="letter-button" class="hidden">open letter</button>
 
-      <button id="cat-button" class="cat-button hidden" aria-label="open tiny message" onclick="document.getElementById('tiny-message').classList.remove('hidden'); document.getElementById('tiny-message').textContent='i love you forever — love, saisha';">
+      <p id="cat-hint" class="cat-hint hidden">click the cat ♡</p>
+      <button id="cat-button" class="cat-button hidden" aria-label="open tiny message">
         <img src="assets/cat-button.gif" alt="cute cat" onerror="this.style.display='none'; this.parentElement.classList.add('cat-fallback');" />
       </button>
-      <div id="tiny-message" class="tiny-message hidden">i love you forever — love, saisha</div>
     </div>
   </div>
 
@@ -54,6 +54,15 @@
     </div>
   </div>
 
+  <div id="cat-message-modal" class="letter-modal hidden" role="dialog" aria-modal="true" aria-labelledby="cat-message-title">
+    <div class="letter-paper cat-message-paper">
+      <h2 id="cat-message-title">one more thing...</h2>
+      <p class="big-love-message">i love you forever</p>
+      <p class="letter-signoff">love,<br>saisha</p>
+      <button id="replay-button" class="replay-button">replay everything</button>
+    </div>
+  </div>
+
   <div class="audio-ui">
     <div class="audio-controls">
       <button id="play-button">▶</button>
@@ -69,6 +78,6 @@
   </div>    
   
   <audio id="audio-player" src="assets/audio/spring-snow-10cm.mp3" autoplay></audio>
-  <script src="index.js?v=4"></script>
+  <script src="index.js?v=6"></script>
 </body>
 </html>
