@@ -14,7 +14,9 @@ const letterButton = document.getElementById('letter-button');
 const letterModal = document.getElementById('letter-modal');
 const closeLetter = document.getElementById('close-letter');
 const catButton = document.getElementById('cat-button');
-const tinyMessage = document.getElementById('tiny-message');
+const catHint = document.getElementById('cat-hint');
+const catMessageModal = document.getElementById('cat-message-modal');
+const replayButton = document.getElementById('replay-button');
 const playButton = document.getElementById('play-button');
 const audio = document.getElementById('audio-player');
 const progressBar = document.getElementById('progress-bar');
@@ -30,7 +32,8 @@ finalMessage.style.display = 'none';
 mainButton.style.display = 'block';
 letterButton.classList.add('hidden');
 catButton.classList.add('hidden');
-tinyMessage.classList.add('hidden');
+catHint.classList.add('hidden');
+catMessageModal.classList.add('hidden');
 
 function updateImage() {
   imageContent.classList.remove('floating');
@@ -44,6 +47,27 @@ function updateImage() {
     imageContent.style.opacity = 1;
     imageContent.classList.add('floating');
   };
+}
+
+function resetEverything() {
+  currentIndex = 0;
+  updateImage();
+
+  finalMessage.style.display = 'none';
+  mainButton.style.display = 'block';
+  letterButton.classList.add('hidden');
+  catButton.classList.add('hidden');
+  catHint.classList.add('hidden');
+  catMessageModal.classList.add('hidden');
+  letterModal.classList.add('hidden');
+  document.querySelector('.final-deco-wrapper').style.display = 'none';
+  imageContent.classList.remove('final-screen');
+
+  audio.currentTime = 0;
+  audio.play();
+  hasStartedAudio = true;
+  isPlaying = true;
+  playButton.textContent = '⏸';
 }
 
 updateImage();
@@ -81,8 +105,8 @@ letterButton.addEventListener('click', () => {
 function closeLetterAndShowCat() {
   letterModal.classList.add('hidden');
   letterButton.classList.add('hidden');
+  catHint.classList.remove('hidden');
   catButton.classList.remove('hidden');
-  tinyMessage.classList.add('hidden');
 }
 
 closeLetter.addEventListener('click', closeLetterAndShowCat);
@@ -93,18 +117,15 @@ letterModal.addEventListener('click', (event) => {
   }
 });
 
-function showTinyMessage(event) {
-  if (event) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-  tinyMessage.textContent = 'i love you forever — love, saisha';
-  tinyMessage.classList.remove('hidden');
-}
+catButton.addEventListener('click', () => {
+  catMessageModal.classList.remove('hidden');
+});
 
-catButton.addEventListener('click', showTinyMessage);
-catButton.addEventListener('pointerup', showTinyMessage);
-catButton.addEventListener('touchend', showTinyMessage);
+catButton.addEventListener('pointerup', () => {
+  catMessageModal.classList.remove('hidden');
+});
+
+replayButton.addEventListener('click', resetEverything);
 
 function formatTime(seconds) {
   const m = Math.floor(seconds / 60);
