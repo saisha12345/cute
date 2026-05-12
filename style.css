@@ -271,6 +271,12 @@
     flex-shrink: 0;
   }
 
+  .cat-button:focus,
+  .cat-button:active {
+    outline: none;
+    border: none;
+  }
+
   .cat-button img {
     width: 92px;
     height: 92px;
@@ -291,16 +297,32 @@
   .tiny-message {
     color: var(--color-message-text);
     font-family: var(--font-family-main);
-    font-size: 1.05rem;
+    font-size: 1.08rem;
     text-align: center;
     background: #fff8fc;
     border: 3px solid var(--color-border);
     border-radius: 15px;
-    padding: 0.5rem 0.75rem;
+    padding: 0.6rem 0.85rem;
     animation: popIn 0.35s ease-out forwards;
-    position: relative;
-    z-index: 30;
-    max-width: 92%;
+    position: absolute;
+    left: 50%;
+    bottom: 92px;
+    transform: translateX(-50%);
+    z-index: 50;
+    width: max-content;
+    max-width: 330px;
+    box-shadow: 0 8px 18px rgba(122, 72, 182, 0.18);
+  }
+
+  .tiny-message::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    border-left: 9px solid transparent;
+    border-right: 9px solid transparent;
+    border-top: 10px solid var(--color-border);
   }
 
   .audio-ui.show {
