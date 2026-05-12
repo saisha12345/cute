@@ -3,17 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <!-- page title -->
   <title>for mingyao</title>
-  
-  <!-- update the favicon path/filename as needed -->
   <link rel="icon" type="image/png" href="./assets/bunny-favicon-pixel.png" sizes="48x48">
-  
-  <!-- Link to your stylesheet -->
   <link rel="stylesheet" href="style.css">
-  
-  <!-- add Google Fonts or other resources here -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,20 +13,15 @@
 <body>
   <div class="container">
     <header>
-      <!-- Change the header text -->
       <h1>our days</h1>
-      
       <div class="shrink-close-icons">
-        <!-- Update icon paths/filenames as needed -->
         <img src="./assets/bunny-shrink-icon.png" alt="Shrink Icon" class="shrink-icon" />
         <img src="./assets/bunny-close-icon.png" alt="Close Icon" class="shrink-icon" />
       </div> 
     </header>
 
     <div class="inner-container">
-      <!-- The image is loaded via CSS from the --image-path-content variable -->
       <div class="image-content"></div>
-      <!-- Change the button text -->
       <button id="main-button">tap tap!</button>
 
       <div class="final-deco-wrapper">
@@ -42,32 +29,46 @@
         <p class="final-date">05•11•2026</p>
       </div>
 
-      <!-- final message text -->
       <div class="final-message">happy to be with you!</div>
-      <!-- replay or final button -->
-      <button id="replay-button" class="hidden">replay</button>
+      <button id="letter-button" class="hidden">open letter</button>
+
+      <button id="cat-button" class="cat-button hidden" aria-label="open tiny message">
+        <img src="assets/cat-button.gif" alt="cute cat" onerror="this.style.display='none'; this.parentElement.classList.add('cat-fallback');" />
+      </button>
+      <div id="tiny-message" class="tiny-message hidden">i love you forever — love, saisha</div>
     </div>
   </div>
 
-    <!-- Audio controller UI (shown outside popup) -->
-    <div class="audio-ui">
-      <div class="audio-controls">
-        <button id="play-button">▶</button>
-        <p id="song-title" class="song-title">Glue Song 💗</p>
+  <div id="letter-modal" class="letter-modal hidden" role="dialog" aria-modal="true" aria-labelledby="letter-title">
+    <div class="letter-paper">
+      <button id="close-letter" class="close-letter" aria-label="close letter">×</button>
+      <h2 id="letter-title">dear mingyao,</h2>
+      <p>
+        i made this little page for you because i wanted somewhere tiny and soft to keep a piece of us.
+        every tap is a small reminder that i am happy to be with you, and that ordinary days feel sweeter with you in them.
+      </p>
+      <p>
+        thank you for being someone i can laugh with, miss, annoy, adore, and choose again. i hope this makes you smile whenever you open it.
+      </p>
+      <p class="letter-signoff">love,<br>saisha</p>
+    </div>
+  </div>
+
+  <div class="audio-ui">
+    <div class="audio-controls">
+      <button id="play-button">▶</button>
+      <p id="song-title" class="song-title">Glue Song 💗</p>
+    </div>
+    <div class="audio-timeline">
+      <span id="current-time">0:00</span>
+      <div class="audio-progress-container" id="progress-container">
+        <div class="audio-progress" id="progress-bar"></div>
       </div>
-      
-      <div class="audio-timeline">
-        <span id="current-time">0:00</span>
-        <div class="audio-progress-container" id="progress-container">
-          <div class="audio-progress" id="progress-bar"></div>
-        </div>
-        <span id="duration">0:00</span>
-      </div>      
-    </div>    
-    
-    <audio id="audio-player" src="assets/audio/spring-snow-10cm.mp3" autoplay></audio>
-    
-  <!-- Link to your JavaScript - don't change unless you rename index.js -->
+      <span id="duration">0:00</span>
+    </div>      
+  </div>    
+  
+  <audio id="audio-player" src="assets/audio/spring-snow-10cm.mp3" autoplay></audio>
   <script src="index.js"></script>
 </body>
 </html>
